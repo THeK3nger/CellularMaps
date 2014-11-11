@@ -76,7 +76,7 @@ int main() {
     cout << "........." << endl;
     return 0;
 }
-```ruby
+```
 
 Easy. The result is stored in the class and can be accessed how shown in the print function.
 
