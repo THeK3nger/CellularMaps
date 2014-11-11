@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 2.8.4)
+project(CellularMaps)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
+set(SOURCE_FILES
+    cellularmap.cpp
+    cellularmap.h
+    main.cpp)
+
+add_executable(CellularMaps ${SOURCE_FILES})
