@@ -19,32 +19,22 @@ CellularMap::~CellularMap()
 void CellularMap::randomFill() 
 {
     srand (time(NULL));
-    int mapMiddle = 0; // Temp variable
     for (int row = 0; row < this->height; row++) {
         for (int column = 0; column < this->width; column++)
         {
-            // If coordinates lie on the the edge of the map (creates a border)
-            if (column == 0)
-            {
-                map[getIndex(column, row)] = 1;
-            }
-            else if (row == 0)
-            {
-                map[getIndex(column, row)] = 1;
-            }
-            else if (column == width - 1)
-            {
-                map[getIndex(column, row)] = 1;
-            }
-            else if (row == height - 1)
+            // If coordinates lie on the the edge of the map (creates a border).
+            // We want border on a map.
+            if (column == 0 || row == 0 || (column == width - 1) || (row == height - 1))
             {
                 map[getIndex(column, row)] = 1;
             }
             // Else, fill with a wall a random percent of the time
             else
             {
-                mapMiddle = (height / 2);
+                int mapMiddle = (height / 2);
 
+                // Add an empty line in the center of the map. This leads to better maps.
+                // There is no other reason.
                 if (row == mapMiddle)
                 {
                     map[getIndex(column, row)] = 0;
@@ -82,11 +72,7 @@ int CellularMap::placeWallLogic(int x, int y,RuleSet rule)
 
     if (map[getIndex(x,y)] == 1)
     {
-        if (numWalls >= 3)
-        {
-            return 1;
-        }
-        return 0;
+        return (numWalls >= 3) ? 1 : 0;
     }
     else
     {
@@ -129,33 +115,11 @@ int CellularMap::getAdjacentWalls(int x, int y, int scope_x, int scope_y)
 
 bool CellularMap::isOutOfBound(int x, int y)
 {
-    if (x < 0 || y<0)
-    {
-        return true;
-    }
-    else if (x>width - 1 || y > height - 1)
-    {
-        return true;
-    }
-    return false;
+    return (x < 0 || y<0 || x>width - 1 || y > height - 1);
 }
 
 bool CellularMap::isWall(int x, int y)
 {
-    // Consider out-of-bound a wall
-    if (isOutOfBound(x, y))
-    {
-        return true;
-    }
-
-    if (map[getIndex(x, y)] == 1)
-    {
-        return true;
-    }
-
-    if (map[getIndex(x, y)] == 0)
-    {
-        return false;
-    }
-    return false;
+    // Out of bound is considered a wall.
+    return (isOutOfBound(x, y)) || (map[getIndex(x, y)] == 1);
 }

@@ -32,5 +32,6 @@ int main() {
     string mapS = mapToString(cm);
     cout << mapS;
     cout << "........." << endl;
+    getchar();
     return 0;
 }
