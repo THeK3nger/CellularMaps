@@ -4,8 +4,8 @@ project(CellularMaps)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 set(SOURCE_FILES
-    cellularmap.cpp
-    cellularmap.h
-    main.cpp)
+        src/CellularMap.cpp
+        includes/CellularMap.h
+        src/main.cpp)
 
 add_executable(CellularMaps ${SOURCE_FILES})

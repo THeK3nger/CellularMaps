@@ -4,7 +4,7 @@
 // Visual Studio want this include to cout strings.
 #include <string>
 
-#include "CellularMap.h"
+#include "../includes/CellularMap.h"
 
 using namespace std;
 

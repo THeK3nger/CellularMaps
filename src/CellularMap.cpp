@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-#include "CellularMap.h"
+#include "../includes/CellularMap.h"
 
 CellularMap::CellularMap(int width, int height, int walls_probability) : 
     height(height), width(width), walls_probability(walls_probability) 
